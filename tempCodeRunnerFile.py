@@ -1,6 +1,0 @@
-plt.figure(figsize=(8,5))
-plt.scatter(df_cleaned['age'], df_cleaned['overall_rating'], s=2, alpha=0.3)
-plt.xlabel("Age")
-plt.ylabel("Overall Rating")
-plt.title("Age vs Rating")
-plt.show()
