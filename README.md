@@ -5,6 +5,11 @@ A Python-based data analysis and visualization project for FIFA player statistic
 ## Overview
 
 This project analyzes FIFA player data to visualize key metrics including age distribution, nationality representation, playing preferences, and performance ratings.
+A **linear regression model** is trained to map player overall ratings to their market values.
+The dataset is split into training (80%) and testing (20%) sets to evaluate performance.
+
+
+
 
 ## Features
 
@@ -17,6 +22,11 @@ This project analyzes FIFA player data to visualize key metrics including age di
 * Stripplot: Weight (kg) vs Acceleration
 * Regression plot: Overall Rating vs Player Value (Euro)
 * Joint plot combining Overall Rating, Value (Euro), and Preferred Foot
+* Train the model on the training set.
+* Predict player values on the test set.
+* Evaluate model performance using:
+  - Mean Squared Error (MSE)
+  - Variance score (R²)
 
 ## Requirements
 
@@ -25,11 +35,12 @@ This project analyzes FIFA player data to visualize key metrics including age di
 * numpy
 * matplotlib
 * seaborn
+* sklearn
 
 ## Installation
 
 ```bash
-pip install pandas numpy matplotlib seaborn
+pip install pandas numpy matplotlib seaborn  sklearn
 ```
 
 ## Usage
@@ -53,15 +64,5 @@ The project uses `fifa_players.csv` containing player attributes and statistics.
 7. **Overall Rating vs Value**: Regression plot
 8. **Joint Plot**: Rating, Value, and Preferred Foot relationships
 
-## Model
 
-A **linear regression model** is trained to map player overall ratings to their market values.
-The dataset is split into training (80%) and testing (20%) sets to evaluate performance.
 
-## Usage
-
-* Train the model on the training set.
-* Predict player values on the test set.
-* Evaluate model performance using:
-* Mean Squared Error (MSE)
-* Variance score (R²)
