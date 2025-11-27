@@ -1,7 +1,12 @@
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as plt
-import seaborn as sns 
+import seaborn as sns
+import sklearn
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+
 df= pd.read_csv("fifa_players.csv")
 
 #Data Cleaning
@@ -15,6 +20,7 @@ df = df.drop(columns=cols_to_drop, errors='ignore')
 df.replace('', np.nan, inplace=True)
 cols_with_nan = [col for col in df.columns if df[col].isna().any() and col != "value_euro"]
 df_cleaned = df.drop(columns=cols_with_nan)
+df_cleaned = df_cleaned.dropna(subset=["overall_rating", "value_euro"])
 
 
 #Visualization of Data
@@ -63,3 +69,19 @@ plt.show()
 #Joint Plot
 sns.jointplot(data=df_cleaned, x="overall_rating", y="value_euro", hue="preferred_foot")
 plt.show()
+
+X = df_cleaned[["overall_rating"]]  # features
+y = df_cleaned["value_euro"]        # target
+
+mod= LinearRegression()
+mod.fit(X,y)
+mod.predict(X)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print("Model trained successfully!")
+print(f"Test set MSE: {mean_squared_error(y_test, y_pred):.2f}")
+print(f"Test set Variance: {r2_score(y_test, y_pred):.4f}")

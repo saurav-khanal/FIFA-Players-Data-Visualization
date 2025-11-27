@@ -52,3 +52,16 @@ The project uses `fifa_players.csv` containing player attributes and statistics.
 6. **Weight vs Acceleration**: Stripplot
 7. **Overall Rating vs Value**: Regression plot
 8. **Joint Plot**: Rating, Value, and Preferred Foot relationships
+
+## Model
+
+A **linear regression model** is trained to map player overall ratings to their market values.
+The dataset is split into training (80%) and testing (20%) sets to evaluate performance.
+
+## Usage
+
+* Train the model on the training set.
+* Predict player values on the test set.
+* Evaluate model performance using:
+* Mean Squared Error (MSE)
+* Variance score (R²)
